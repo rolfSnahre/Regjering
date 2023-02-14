@@ -123,12 +123,12 @@
       <Variable x:TypeArguments="sxl:XElement" Name="xmlListElement" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="totalAgeMen" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="numberOfMen" />
-      <Variable x:TypeArguments="x:Int32" Name="averageAgeMen" />
+      <Variable x:TypeArguments="x:Double" Name="averageAgeMen" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="totalAgeWomen" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="numberOfWomen" />
-      <Variable x:TypeArguments="x:Int32" Name="averageAgeWomen" />
-      <Variable x:TypeArguments="x:Int32" Name="percentMen" />
-      <Variable x:TypeArguments="x:Int32" Name="percentWomen" />
+      <Variable x:TypeArguments="x:Double" Name="averageAgeWomen" />
+      <Variable x:TypeArguments="x:Double" Name="percentMen" />
+      <Variable x:TypeArguments="x:Double" Name="percentWomen" />
       <Variable x:TypeArguments="sxl:XNamespace" Name="xmlNamespace">
         <Variable.Default>
           <CSharpValue x:TypeArguments="sxl:XNamespace" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">"http://data.stortinget.no"</CSharpValue>
@@ -250,7 +250,7 @@
         </InArgument>
       </ui:ForEach.Values>
     </ui:ForEach>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="int numberOfPeople = numberOfMen + numberOfWomen;&#xD;&#xA;percentMen = (int) ((double) numberOfMen / numberOfPeople* 100);&#xD;&#xA;percentWomen = (int) ((double)numberOfWomen/numberOfPeople * 100);&#xD;&#xA;&#xD;&#xA;averageAgeMen = totalAgeMen/numberOfMen;&#xD;&#xA;averageAgeWomen = totalAgeWomen/numberOfWomen;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="636,165" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="int numberOfPeople = numberOfMen + numberOfWomen;&#xD;&#xA;percentMen = (double) numberOfMen / numberOfPeople* 100;&#xD;&#xA;percentWomen = (double) numberOfWomen/numberOfPeople * 100;&#xD;&#xA;&#xD;&#xA;averageAgeMen = (double) totalAgeMen/numberOfMen;&#xD;&#xA;averageAgeWomen = (double) totalAgeWomen/numberOfWomen;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="636,165" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
       <ui:InvokeCode.Arguments>
         <InArgument x:TypeArguments="x:Int32" x:Key="numberOfMen">
           <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">numberOfMen</CSharpValue>
@@ -264,29 +264,29 @@
         <InArgument x:TypeArguments="x:Int32" x:Key="totalAgeWomen">
           <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">totalAgeWomen</CSharpValue>
         </InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="averageAgeMen">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">averageAgeMen</CSharpReference>
+        <OutArgument x:TypeArguments="x:Double" x:Key="averageAgeMen">
+          <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">averageAgeMen</CSharpReference>
         </OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="averageAgeWomen">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">averageAgeWomen</CSharpReference>
+        <OutArgument x:TypeArguments="x:Double" x:Key="averageAgeWomen">
+          <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">averageAgeWomen</CSharpReference>
         </OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="percentMen">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">percentMen</CSharpReference>
+        <OutArgument x:TypeArguments="x:Double" x:Key="percentMen">
+          <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">percentMen</CSharpReference>
         </OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="percentWomen">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">percentWomen</CSharpReference>
+        <OutArgument x:TypeArguments="x:Double" x:Key="percentWomen">
+          <CSharpReference x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">percentWomen</CSharpReference>
         </OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="636,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38" xml:space="preserve">"\n"+
-"Prosent men: " + percentMen + "%\n" +
-"Prosent kvinner: " + percentWomen + "%\n" +
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39" xml:space="preserve">"\n"+
+"Prosent men: " + percentMen.ToString("0.##") + "%\n" +
+"Prosent kvinner: " + percentWomen.ToString("0.##") + "%\n" +
 "\n" +
-"Gjennomsnittalder menn: " + averageAgeMen + "\n"+
-"Gjennomsnittalder kvinner: " + averageAgeWomen +"\n"</CSharpValue>
+"Gjennomsnittalder menn: " + averageAgeMen.ToString("0.#") + "\n"+
+"Gjennomsnittalder kvinner: " + averageAgeWomen.ToString("0.#") +"\n"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
