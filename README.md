@@ -1,4 +1,4 @@
-# Rejering_API
+# Regjering
 Gets data  about members of government from their API. Does some simple calculations.
 
 First an API request is sent to "https://data.stortinget.no/eksport/regjering" to get data in an XML format
