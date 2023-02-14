@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="3255,2454" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Private.Xml.Linq" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="4434,2454" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Private.Xml.Linq" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -250,7 +250,7 @@
         </InArgument>
       </ui:ForEach.Values>
     </ui:ForEach>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="percentMen = numberOfMen/numberOfWomen * 100;&#xA;percentWomen = numberOfWomen/numberOfMen * 100;&#xA;&#xA;averageAgeMen = totalAgeMen/numberOfMen;&#xA;averageAgeWomen = totalAgeWomen/numberOfWomen;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="636,165" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="int numberOfPeople = numberOfMen + numberOfWomen;&#xD;&#xA;percentMen = (int) ((double) numberOfMen / numberOfPeople* 100);&#xD;&#xA;percentWomen = (int) ((double)numberOfWomen/numberOfPeople * 100);&#xD;&#xA;&#xD;&#xA;averageAgeMen = totalAgeMen/numberOfMen;&#xD;&#xA;averageAgeWomen = totalAgeWomen/numberOfWomen;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="636,165" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
       <ui:InvokeCode.Arguments>
         <InArgument x:TypeArguments="x:Int32" x:Key="numberOfMen">
           <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">numberOfMen</CSharpValue>
@@ -271,17 +271,17 @@
           <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">averageAgeWomen</CSharpReference>
         </OutArgument>
         <OutArgument x:TypeArguments="x:Int32" x:Key="percentMen">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">percentMen</CSharpReference>
+          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">percentMen</CSharpReference>
         </OutArgument>
         <OutArgument x:TypeArguments="x:Int32" x:Key="percentWomen">
-          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">percentWomen</CSharpReference>
+          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">percentWomen</CSharpReference>
         </OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="636,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34" xml:space="preserve">"\n"+
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38" xml:space="preserve">"\n"+
 "Prosent men: " + percentMen + "%\n" +
 "Prosent kvinner: " + percentWomen + "%\n" +
 "\n" +
